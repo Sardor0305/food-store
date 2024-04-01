@@ -1,4 +1,4 @@
-package uz.example.foodstore.service;
+package uz.example.foodstore.service.impl;
 
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;

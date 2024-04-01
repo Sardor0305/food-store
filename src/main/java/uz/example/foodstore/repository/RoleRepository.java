@@ -15,4 +15,5 @@ public interface RoleRepository extends JpaRepository<Role,Long> {
     Optional<RoleDto> getByRoleId(Long id);
     @Query("select new uz.example.foodstore.dto.response.RoleDto(r) from Role r")
     Optional<List<RoleDto>> getAllRole();
+    boolean existsByValue(String value);
 }

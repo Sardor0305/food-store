@@ -22,9 +22,11 @@ public class DataLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         final String username = "admin";
-        if (!userRepository.existsByUsername(username)) {
-            Role roleAdmin = new Role(1L, "ROLE_ADMIN");
-            Role roleWorker = new Role(1L, "ROLE_WORKER");
+        final String admin = "ROLE_ADMIN";
+        final String worker = "ROLE_WORKER";
+        if (!userRepository.existsByUsername(username) && !roleRepository.existsByValue(admin)) {
+            Role roleAdmin = new Role(1L, admin);
+            Role roleWorker = new Role(1L, worker);
             List<Role> roles = roleRepository.saveAll(List.of(roleAdmin, roleWorker));
             User user = new User(1L, "Admin", username, passwordEncoder.encode("admin_password"), null, roles);
             userRepository.save(user);
