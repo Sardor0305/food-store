@@ -24,11 +24,11 @@ public class DataLoader implements CommandLineRunner {
         final String username = "admin";
         final String admin = "ROLE_ADMIN";
         final String worker = "ROLE_WORKER";
-        if (!userRepository.existsByUsername(username) && !roleRepository.existsByValue(admin)) {
+        if (!userRepository.existsByUsername(username) ) {
             Role roleAdmin = new Role(1L, admin);
-            Role roleWorker = new Role(1L, worker);
-            List<Role> roles = roleRepository.saveAll(List.of(roleAdmin, roleWorker));
-            User user = new User(1L, "Admin", username, passwordEncoder.encode("admin_password"), null, roles);
+//            Role roleWorker = new Role(1L, worker);
+            List<Role> roles = roleRepository.saveAll(List.of(roleAdmin));
+            User user = new User(1L, "Admin", username, passwordEncoder.encode("admin_password"), null, List.of(roleAdmin));
             userRepository.save(user);
         }
     }

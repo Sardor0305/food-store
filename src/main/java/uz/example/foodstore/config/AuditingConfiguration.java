@@ -23,5 +23,4 @@ public class AuditingConfiguration implements AuditorAware<String> {
         return Optional.empty();
     }
 
-
 }
